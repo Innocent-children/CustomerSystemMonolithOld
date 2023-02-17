@@ -13,14 +13,14 @@ public class CustomerStaffRespVO {
 
     private Long id;
     private Long groupId;
-    private String nickname;
     private String staffName;
+    private String nickname;
     private String avatar;
     private String phone;
     private Gender gender;
     private String goodAt;
+    private Status status;
     private String welcomeMessage;
     private String remark;
-    private Status status;
     private LocalDateTime createTime;
 }

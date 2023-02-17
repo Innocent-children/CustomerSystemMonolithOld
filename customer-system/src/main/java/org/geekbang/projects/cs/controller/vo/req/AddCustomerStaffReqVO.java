@@ -9,14 +9,14 @@ import org.geekbang.projects.cs.entity.staff.enums.Gender;
 public class AddCustomerStaffReqVO {
 
     private Long groupId;
+    private String staffName;
     private String nickname;
     private String accountId;
-    private String staffName;
     private String avatar;
     private String phone;
     private Gender gender;
-    private String status;
     private String goodAt;
+    private String status;
     private String welcomeMessage;
     private String remark;
 }
