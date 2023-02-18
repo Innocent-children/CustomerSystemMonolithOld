@@ -33,6 +33,9 @@ Content-Type: application/json
 DELETE localhost:8081/customerStaffs/1
 
 ###
+GET localhost:8081/customerStaffs/async/2
+
+###
 GET localhost:8081/customerStaffs/2
 
 ###

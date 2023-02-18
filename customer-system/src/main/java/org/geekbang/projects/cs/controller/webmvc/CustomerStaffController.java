@@ -1,5 +1,7 @@
 package org.geekbang.projects.cs.controller.webmvc;
 
+
+import lombok.extern.slf4j.Slf4j;
 import org.geekbang.projects.cs.controller.vo.req.AddCustomerStaffReqVO;
 import org.geekbang.projects.cs.controller.vo.req.UpdateCustomerStaffReqVO;
 import org.geekbang.projects.cs.controller.vo.resp.CustomerStaffRespVO;
@@ -10,9 +12,12 @@ import org.geekbang.projects.cs.infrastructure.vo.Result;
 import org.geekbang.projects.cs.service.ICustomerStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.WebAsyncTask;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
+@Slf4j
 @RestController
 @RequestMapping("/customerStaffs")
 public class CustomerStaffController {
@@ -49,6 +54,50 @@ public class CustomerStaffController {
         CustomerStaff customerStaff = customerStaffService.findCustomerStaffById(staffId);
         CustomerStaffRespVO customerStaffRespVO = CustomerStaffConverter.INSTANCE.customerStaffToCustomerStaffRespVO(customerStaff);
         return Result.success(customerStaffRespVO);
+    }
+
+    /**
+     * 使用另一个线程进行查找操作，异步进行
+     *
+     * @param staffId
+     * @return
+     */
+    @GetMapping("/async/{staffId}")
+    public WebAsyncTask<CustomerStaffRespVO> asyncFindCustomerStaffById(@PathVariable("staffId") Long staffId) {
+        System.out.println("主线程名字：" + Thread.currentThread().getName());
+        //启动一个异步Web任务
+        WebAsyncTask<CustomerStaffRespVO> task = new WebAsyncTask<CustomerStaffRespVO>(5 * 1000L, new Callable<CustomerStaffRespVO>() {
+            @Override
+            public CustomerStaffRespVO call() throws Exception {
+                System.out.println("当前工作线程名字：" + Thread.currentThread().getName());
+                CustomerStaff customerStaff = customerStaffService.findCustomerStaffById(staffId);
+                CustomerStaffRespVO customerStaffRespVO = CustomerStaffConverter.INSTANCE.customerStaffToCustomerStaffRespVO(customerStaff);
+                return customerStaffRespVO;
+            }
+        });
+        //任务超时设置
+        task.onTimeout(new Callable<CustomerStaffRespVO>() {
+            @Override
+            public CustomerStaffRespVO call() throws Exception {
+                System.out.println(Thread.currentThread().getName() + "超时了！！！");
+                return new CustomerStaffRespVO();
+            }
+        });
+        //任务完成时执行
+        task.onCompletion(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(Thread.currentThread().getName() + "执行结束");
+            }
+        });
+        task.onError(new Callable<CustomerStaffRespVO>() {
+            @Override
+            public CustomerStaffRespVO call() throws Exception {
+                System.out.println(Thread.currentThread().getName() + "执行时发生异常！！！");
+                return new CustomerStaffRespVO();
+            }
+        });
+        return task;
     }
 
     //批量获取客服信息
