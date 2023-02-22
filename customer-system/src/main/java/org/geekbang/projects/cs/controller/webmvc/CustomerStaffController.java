@@ -49,6 +49,12 @@ public class CustomerStaffController {
         return Result.success(updateStatus);
     }
 
+    @GetMapping("/findAll")
+    public Result<List<CustomerStaffRespVO>> findAllCustomerStaff() {
+        List<CustomerStaff> customerStaffs = customerStaffService.findCustomerStaffs();
+        return Result.success(CustomerStaffConverter.INSTANCE.customerStaffsToCustomerStaffRespVOs(customerStaffs));
+    }
+
     @GetMapping("/{staffId}")
     public Result<CustomerStaffRespVO> findCustomerStaffById(@PathVariable("staffId") Long staffId) {
         CustomerStaff customerStaff = customerStaffService.findCustomerStaffById(staffId);

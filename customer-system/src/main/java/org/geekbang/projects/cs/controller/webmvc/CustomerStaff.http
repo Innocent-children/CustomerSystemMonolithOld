@@ -16,7 +16,7 @@ POST localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
-  "groupId" : "1",
+  "groupId" : "3",
   "accountId" : "100",
   "staffName" : "墨十八",
   "nickname" : "MoTong",
@@ -34,6 +34,9 @@ DELETE localhost:8081/customerStaffs/1
 
 ###
 GET localhost:8081/customerStaffs/async/2
+
+###
+GET localhost:8081/customerStaffs/findAll
 
 ###
 GET localhost:8081/customerStaffs/2
