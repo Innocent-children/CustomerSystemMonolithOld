@@ -1,11 +1,11 @@
-POST localhost:8081/customerStaffs/
+PUT localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
-  "id": "2",
+  "id": "4",
   "groupId": "1",
   "nickName": "墨十八",
-  "avatar": "1.jpg",
+  "avatar": "6.jpg",
   "goodAt": "使劲忽悠客户",
   "status": "ONLINE",
   "welcomeMessage": "你好，大忽悠1号很高兴为您服务！",
