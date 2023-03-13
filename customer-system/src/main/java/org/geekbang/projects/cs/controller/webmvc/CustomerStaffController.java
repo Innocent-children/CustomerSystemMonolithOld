@@ -76,12 +76,14 @@ public class CustomerStaffController {
             @Override
             public CustomerStaffRespVO call() throws Exception {
                 System.out.println("当前工作线程名字：" + Thread.currentThread().getName());
+                //睡眠6秒，会导致超时（超时时间是5秒）
+//                Thread.sleep(6 * 1000);
                 CustomerStaff customerStaff = customerStaffService.findCustomerStaffById(staffId);
                 CustomerStaffRespVO customerStaffRespVO = CustomerStaffConverter.INSTANCE.customerStaffToCustomerStaffRespVO(customerStaff);
                 return customerStaffRespVO;
             }
         });
-        //任务超时设置
+        //任务超时设置：添加类似熔断的效果，5秒之后超时直接返回一个空对象
         task.onTimeout(new Callable<CustomerStaffRespVO>() {
             @Override
             public CustomerStaffRespVO call() throws Exception {
@@ -103,6 +105,7 @@ public class CustomerStaffController {
                 return new CustomerStaffRespVO();
             }
         });
+        System.out.println("主线程依旧在执行：" + Thread.currentThread().getName());
         return task;
     }
 
