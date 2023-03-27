@@ -11,6 +11,6 @@ public class CustomBuildInfoContributor implements InfoContributor {
 
     @Override
     public void contribute(Info.Builder builder) {
-        builder.withDetail("build", Collections.singletonMap("buildBy", "tianyalan"));
+        builder.withDetail("build", Collections.singletonMap("buildBy", "墨十八"));
     }
 }

@@ -15,10 +15,10 @@ public class CustomHealthIndicator implements HealthIndicator {
 
         try {
             URL url = new URL("http://XXX:8080/healthcheck/");
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             int status = connection.getResponseCode();
 
-            if(status >= 200 && status < 300) {
+            if (status >= 200 && status < 300) {
                 return Health.up().build();
             } else {
                 return Health.down().withDetail("Failed! code is: ", status).build();
