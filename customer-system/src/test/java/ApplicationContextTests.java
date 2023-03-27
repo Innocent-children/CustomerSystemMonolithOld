@@ -1,3 +1,4 @@
+import org.geekbang.projects.cs.Application;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @ExtendWith(SpringExtension.class)
 public class ApplicationContextTests {
 
@@ -18,5 +19,4 @@ public class ApplicationContextTests {
     public void testContextLoads() {
         assertNotNull(this.applicationContext);
     }
-
 }
