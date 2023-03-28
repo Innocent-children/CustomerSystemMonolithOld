@@ -15,10 +15,10 @@ public interface OutsourcingSystemConverter {
     OutsourcingSystemConverter INSTANCE = Mappers.getMapper(OutsourcingSystemConverter.class);
 
     //VO-->Entity
-    CustomerStaff addOutsourcingSyatemReqVOToCustomerStaff(AddOutsourcingSystemReqVO addOutsourcingSystemReqVO);
+    OutsourcingSystem addOutsourcingSyatemReqVOToCustomerStaff(AddOutsourcingSystemReqVO addOutsourcingSystemReqVO);
 
     //Entity-->VO
-    OutsourcingSystemRespVO customerStaffToOutsourcingSystemRespVO(CustomerStaff customerStaff);
+    OutsourcingSystemRespVO customerStaffToOutsourcingSystemRespVO(OutsourcingSystem customerStaff);
 
-    List<OutsourcingSystemRespVO> customerStaffToOutsourcingSystemRespVOs(List<CustomerStaff> customerStaffList);
+    List<OutsourcingSystemRespVO> customerStaffToOutsourcingSystemRespVOs(List<OutsourcingSystem> customerStaffList);
 }
