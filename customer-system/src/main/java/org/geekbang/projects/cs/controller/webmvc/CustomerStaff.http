@@ -11,22 +11,23 @@ Content-Type: application/json
   "welcomeMessage": "你好，大忽悠1号很高兴为您服务！",
   "remark": "大忽悠从不忽悠人"
 }
+
 ###
 POST localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
-  "groupId" : "3",
-  "accountId" : "100",
-  "staffName" : "墨十八",
-  "nickname" : "MoTong",
-  "status" : "ONLINE",
-  "avatar" : "1.jpg",
-  "phone" : "13355667789",
-  "gender" : "MALE",
-  "goodAt" : "擅长",
-  "welcomeMessage" : "你好，我是墨十八",
-  "remark" : "这是客服墨十八"
+  "groupId": "3",
+  "accountId": "100",
+  "staffName": "墨十八",
+  "nickname": "MoTong",
+  "status": "ONLINE",
+  "avatar": "1.jpg",
+  "phone": "13355667789",
+  "gender": "MALE",
+  "goodAt": "擅长",
+  "welcomeMessage": "你好，我是墨十八",
+  "remark": "这是客服墨十八"
 }
 
 ###
@@ -47,17 +48,17 @@ Content-Type: application/json
 
 {
   "id": 2,
-  "groupId" : "1",
-  "accountId" : "100",
-  "staffName" : "墨十八",
-  "nickname" : "MoTong",
-  "status" : "ONLINE",
-  "avatar" : "2.jpg",
-  "phone" : "13355667789",
-  "gender" : "MALE",
-  "goodAt" : "擅长",
-  "welcomeMessage" : "你好，我是墨十八",
-  "remark" : "这是客服墨十八"
+  "groupId": "1",
+  "accountId": "100",
+  "staffName": "墨十八",
+  "nickname": "MoTong",
+  "status": "ONLINE",
+  "avatar": "2.jpg",
+  "phone": "13355667789",
+  "gender": "MALE",
+  "goodAt": "擅长",
+  "welcomeMessage": "你好，我是墨十八",
+  "remark": "这是客服墨十八"
 }
 
 ###
@@ -66,11 +67,17 @@ Content-Type: application/json
 
 {
   "id": 2,
-  "groupId" : "1",
-  "nickname" : "MoTong",
-  "status" : "ONLINE",
-  "avatar" : "3.jpg",
-  "goodAt" : "擅长",
-  "welcomeMessage" : "你好，我是墨十八",
-  "remark" : "这是客服墨十八"
+  "groupId": "1",
+  "nickname": "MoTong",
+  "status": "ONLINE",
+  "avatar": "3.jpg",
+  "goodAt": "擅长",
+  "welcomeMessage": "你好，我是墨十八",
+  "remark": "这是客服墨十八"
 }
+###
+
+GET localhost:8081/customerStaffs/sync/1
+Content-Type: application/json
+
+###

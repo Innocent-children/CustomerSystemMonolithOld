@@ -128,4 +128,13 @@ public class CustomerStaffController {
         Boolean delete = customerStaffService.deleteCustomerStaffById(staffId);
         return Result.success(delete);
     }
+
+    @GetMapping("/sync/{systemId}")
+    public Result<Boolean> syncOutsourcingCustomerStaffsBySystemId(@PathVariable("systemId") Long systemId) {
+
+        //触发远程调用，获取客服信息并保存
+        customerStaffService.syncOutsourcingCustomerStaffsBySystemId(systemId);
+
+        return Result.success(true);
+    }
 }
