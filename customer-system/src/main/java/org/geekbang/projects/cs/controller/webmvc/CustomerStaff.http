@@ -48,7 +48,7 @@ Content-Type: application/json
 
 {
   "id": 2,
-  "groupId": "1",
+  "groupId": 1,
   "accountId": "100",
   "staffName": "墨十八",
   "nickname": "MoTong",
@@ -75,9 +75,14 @@ Content-Type: application/json
   "welcomeMessage": "你好，我是墨十八",
   "remark": "这是客服墨十八"
 }
+
 ###
 
 GET localhost:8081/customerStaffs/sync/1
 Content-Type: application/json
+
+###
+
+GET localhost:8081/customerStaffs/page/3/3
 
 ###

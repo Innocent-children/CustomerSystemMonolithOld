@@ -111,7 +111,8 @@ public class CustomerStaffController {
 
     //批量获取客服信息
     @GetMapping("/page/{pageSize}/{pageIndex}")
-    public Result<PageObject<CustomerStaffRespVO>> findCustomerStaffs(@PathVariable("pageSize") Long pageSize, @PathVariable("pageIndex") Long pageIndex) {
+    public Result<PageObject<CustomerStaffRespVO>> findCustomerStaffs(@PathVariable("pageSize") Long pageSize,
+                                                                      @PathVariable("pageIndex") Long pageIndex) {
         PageObject<CustomerStaff> pagedCustomerStaff = customerStaffService.findCustomerStaffs(pageSize, pageIndex);
         List<CustomerStaffRespVO> customerStaffRespVOs = CustomerStaffConverter.INSTANCE.customerStaffsToCustomerStaffRespVOs(pagedCustomerStaff.getList());
         PageObject<CustomerStaffRespVO> result = new PageObject<CustomerStaffRespVO>()
