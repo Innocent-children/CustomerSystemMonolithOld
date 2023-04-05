@@ -14,7 +14,7 @@ public class CustomHealthIndicator implements HealthIndicator {
     public Health health() {
 
         try {
-            URL url = new URL("http://XXX:8080/healthcheck/");
+            URL url = new URL("https://www.baidu.com");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             int status = connection.getResponseCode();
 
