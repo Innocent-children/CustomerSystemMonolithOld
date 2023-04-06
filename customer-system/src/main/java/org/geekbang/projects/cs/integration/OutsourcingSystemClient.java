@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -19,15 +20,25 @@ public class OutsourcingSystemClient {
 
     public List<CustomerStaff> getCustomerStaffs(OutsourcingSystem outsourcingSystem) {
 
-        //通过RestTemplate发起远程调用
-        ResponseEntity<Result> result = restTemplate.exchange(
-                outsourcingSystem.getSystemUrl(),
-                HttpMethod.GET,
-                null,
-                Result.class
-        );
+        ResponseEntity<Result> result = null;
+        try {
+            //通过RestTemplate发起远程调用
+            result = restTemplate.exchange(
+                    outsourcingSystem.getSystemUrl(),
+                    HttpMethod.GET,
+                    null,
+                    Result.class
+            );
+        } catch (HttpStatusCodeException e) {
+            //捕捉HTTP异常
+            e.getResponseBodyAsString();
 
-        List<CustomerStaff> customerStaffs = (List<CustomerStaff>)result.getBody().getData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        List<CustomerStaff> customerStaffs = (List<CustomerStaff>) result.getBody().getData();
 
         return customerStaffs;
     }
