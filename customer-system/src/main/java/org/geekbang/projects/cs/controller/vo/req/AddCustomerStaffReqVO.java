@@ -12,6 +12,7 @@ public class AddCustomerStaffReqVO {
     private String staffName;
     private String nickname;
     private String accountId;
+    private Long systemId;
     private String avatar;
     private String phone;
     private Gender gender;
