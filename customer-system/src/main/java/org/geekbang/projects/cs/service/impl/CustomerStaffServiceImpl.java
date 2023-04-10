@@ -92,10 +92,10 @@ public class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, C
         OutsourcingSystem outsourcingSystem = outsourcingSystemService.findOutsourcingSystemById(systemId);
 
         //根据租户远程获取客服信息
-        List<CustomerStaff> customerStaffs = outsourcingSystemClient.getCustomerStaffs(outsourcingSystem);
+//        List<CustomerStaff> customerStaffs = outsourcingSystemClient.getCustomerStaffs(outsourcingSystem);
 
 
-//        List<CustomerStaff> customerStaffs = customerStaffEndpoint.fetchCustomerStaffs(outsourcingSystem);
+        List<CustomerStaff> customerStaffs = customerStaffEndpoint.fetchCustomerStaffs(outsourcingSystem);
 
         //保存客服信息
         saveOrUpdateBatch(customerStaffs);
