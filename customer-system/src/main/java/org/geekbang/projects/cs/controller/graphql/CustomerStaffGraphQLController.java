@@ -22,9 +22,9 @@ public class CustomerStaffGraphQLController {
     @PostMapping(value = "/query")
     public ResponseEntity<Object> query(@RequestBody String query) {
 
-       ExecutionResult result = graphQL.execute(query);
+        ExecutionResult result = graphQL.execute(query);
 //       result.getErrors()
-       return ResponseEntity.ok(result.getData());
+        return ResponseEntity.ok(result.getData());
 
     }
 

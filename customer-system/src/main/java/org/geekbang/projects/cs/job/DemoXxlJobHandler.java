@@ -13,7 +13,7 @@ public class DemoXxlJobHandler {
 
     private static Logger logger = LoggerFactory.getLogger(DemoXxlJobHandler.class);
 
-    @XxlJob("testJobHandler")
+    @XxlJob("demoJobHandler")
     public ReturnT<String> demoJobHandler(String param) throws Exception {
         logger.info(new Date() + "Test Xxl-Job~");
 
