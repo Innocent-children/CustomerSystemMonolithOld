@@ -11,6 +11,9 @@ public class CustomerStaffEmptyFilter extends AbstractCustomerStaffFilter {
         if (Objects.isNull(customerStaff.getStaffName())) {
             return null;
         }
+        if (customerStaff.getStaffName().contains("4") || customerStaff.getNickname().contains("4")) {
+            return null;
+        }
 
         if (getNext() != null) {
             return getNext().execute(customerStaff);
